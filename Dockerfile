@@ -1,7 +1,10 @@
 FROM node:14.15.4-alpine3.10
 
 ARG NODE_ENV=production
-
+RUN wget 'https://fonts.google.com/download?family=Roboto|Montserrat|Open Sans|Ubuntu' -O googlefonts.zip
+RUN unzip googlefonts.zip -d /usr/share/fonts/googlefonts/
+RUN rm -f googlefonts.zip
+RUN fc-cache -fv
 RUN apk add --no-cache \
     chromium \
     nss \
